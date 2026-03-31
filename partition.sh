@@ -66,7 +66,7 @@ partition_drive() {
         path="${path%%:*}"
         local script="${entry##*:}"
 
-        echo "Processing $system from $path..."
+        echo "Processing $system from $script..."
 
         # Source system script
         source "$script"
