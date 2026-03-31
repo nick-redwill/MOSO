@@ -4,20 +4,20 @@ SYSTEM_NAME="Linux"
 
 make_partition() {
     local drive=$1
-    local part_name=$2
-    local iso_path=$3
+    local part=$2
+    local iso=$3
     local start_mib=$4
 
     # Calculating partition size + extra buffer
     local iso_size_bytes
-    iso_size_bytes=$(stat -c%s "$iso_path")
+    iso_size_bytes=$(stat -c%s "$iso")
     
     local size_mib=$(( (iso_size_bytes + BUFFER_SIZE) / 1024 / 1024 ))
     local end_mib=$(( start_mib + size_mib ))
 
     # Using 'ext4' as a placeholder
     # parted just needs a hint.
-    guard parted -s "$drive" mkpart "$part_name" ext4 "${start_mib}MiB" "${end_mib}MiB" > /dev/null
+    guard parted -s "$drive" mkpart "$part" ext4 "${start_mib}MiB" "${end_mib}MiB" > /dev/null
 
     # Echo the NEW offset so the main loop can capture it
     # This becomes the 'start_mib' for the next partition.

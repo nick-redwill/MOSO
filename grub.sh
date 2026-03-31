@@ -41,6 +41,7 @@ write_grub_header() {
 
     cat << EOF > "$mount_point/$GRUB_FOLDER/grub.cfg"
 insmod iso9660
+insmod part_gpt
 
 set default=0
 set timeout=30

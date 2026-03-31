@@ -25,8 +25,8 @@ verify_write() {
         count="$byte_count" \
         2>/dev/null | md5sum | awk '{print $1}')
 
-    echo "    Expected: $iso_sum"
-    echo "    Got:      $part_sum"
+    # echo "    Expected: $iso_sum"
+    # echo "    Got:      $part_sum"
 
     [ "$iso_sum" = "$part_sum" ] && echo "  OK" || {
         echo "  MISMATCH"

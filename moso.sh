@@ -14,7 +14,7 @@ source "$SCRIPT_DIR/grub.sh"
 source "$SCRIPT_DIR/iso.sh"
 
 # Constants
-BUFFER_SIZE=$((20 * 1024 * 1024))  # Additional 20 MiB buffer in bytes
+BUFFER_SIZE=$((50 * 1024 * 1024))     # Additional 50 MiB buffer in bytes
 BOOT_SIZE=$((501 * 1024 * 1024))      # EFI + BOOT partitions size
 
 # Global values
@@ -120,7 +120,7 @@ main() {
 
     echo -e "${BLUE}[ 6/6 ] Cleaning up...${RESET}"
     unmount_drive "$TARGET"
-    rmdir $MOUNT_POINT
+    # rmdir $MOUNT_POINT
 
     sync
     

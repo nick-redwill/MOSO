@@ -100,3 +100,29 @@ human_size() {
         echo "$(( bytes / 1024 ))KiB"
     fi
 }
+
+compare_files() {
+    local src=$1
+    local dst=$2
+    local name
+    name=$(basename "$src")
+
+    if [ ! -f "$dst" ]; then
+        echo "  MISSING: $name"
+        return 1
+    fi
+
+    local src_sum dst_sum
+    src_sum=$(md5sum "$src" | awk '{print $1}')
+    dst_sum=$(md5sum "$dst" | awk '{print $1}')
+
+    if [ "$src_sum" = "$dst_sum" ]; then
+        echo "  OK: $name"
+        return 0
+    else
+        echo "  MISMATCH: $name"
+        echo "    Expected: $src_sum"
+        echo "    Got:      $dst_sum"
+        return 1
+    fi
+}
