@@ -3,9 +3,10 @@
 <img src="media/logo.png" width="300px">
 </p>
 
+
 # Multiboot Operating System Orchestrator
 
-**MOSO** is a command-line tool for creating multiboot USB drives. It handles partitioning, writing, verification, and GRUB configuration automatically — supporting Linux distros, BSD systems Windows, and others.
+**MOSO** is a command-line tool for creating multiboot USB drives. It automates partitioning, image writing, verification, and GRUB configuration, with support for Linux distributions, BSD systems, Windows, and more.
 
 ## Installation
 
