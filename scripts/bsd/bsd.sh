@@ -2,6 +2,16 @@
 
 SYSTEM_NAME="BSD"
 
+get_required_size() {
+    local iso=$1
+
+    # Simply returning the size of ISO
+    local iso_size_bytes
+    iso_size_bytes=$(guard stat -c%s "$iso")
+
+    echo "$iso_size_bytes"
+}
+
 make_partition() {
     local drive=$1
     local part=$2
@@ -10,7 +20,7 @@ make_partition() {
 
     # Calculating partition size + extra buffer
     local iso_size_bytes
-    iso_size_bytes=$(stat -c%s "$iso")
+    iso_size_bytes=$(get_required_size "$iso")
     
     local size_mib=$(( (iso_size_bytes + BUFFER_SIZE) / 1024 / 1024 ))
     local end_mib=$(( start_mib + size_mib ))

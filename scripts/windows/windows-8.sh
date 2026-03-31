@@ -1,6 +1,6 @@
 #!/bin/bash
-# scripts/windows/windows-10.sh
+# scripts/windows/windows-8.sh
 
 source "$(dirname "${BASH_SOURCE[0]}")/windows-new.sh"
 
-SYSTEM_NAME="Windows 10"
+SYSTEM_NAME="Windows 8"

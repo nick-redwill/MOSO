@@ -5,11 +5,6 @@ get_drive_size() {
     blockdev --getsize64 "$drive"
 }
 
-get_iso_size() {
-    local path=$1
-    stat -c%s "$path"
-}
-
 calculate_required() {
     local -n _probed=$1
     local total=0
@@ -18,8 +13,11 @@ calculate_required() {
         local path="${entry#*:}"
         path="${path%%:*}"
 
+        local script="${entry##*:}"
+        source "$script"
+
         local size
-        size=$(get_iso_size "$path")
+        size=$(get_required_size "$path")
         total=$((total + size + BUFFER_PER_ISO))
     done
     total=$((total + $BOOT_SIZE))
