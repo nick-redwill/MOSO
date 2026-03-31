@@ -50,9 +50,9 @@ Options:
 ## TODO
 
 - [ ] Write a better README lol
-- [ ] Add more supported OSes (specifically Linux distros)
-- [ ] Add --list argument for list available systems
-- [ ] Add retry logic and special argument for that (--max-retries)
+- [ ] Add support for more OSes (specifically Linux distros)
+- [ ] Add `--list` flag for listing all available systems
+- [ ] Add retry logic and special argument for that (`--max-retries=<N>`)
 
 ## License
 
