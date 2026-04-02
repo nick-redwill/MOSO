@@ -76,7 +76,7 @@ Options:
 
 | Family    | Version / Distribution                                                                 | Boot Mode     | Notes                                                                 |
 |-----------|-----------------------------------------------------------------------------------------|---------------|-----------------------------------------------------------------------|
-| GNU/Linux | Ubuntu, Linux Mint (Debian), Arch (**excluding derivatives**), CachyOS, Puppy (Void, Debian), Fedora (incl. Kinoite) | BIOS & UEFI   | Uses built-in `grub.cfg`. Persistence is **not supported**.            |
+| GNU/Linux | Ubuntu, Linux Mint, Debian, Arch (**excluding derivatives**), CachyOS, Puppy (Void, Debian), Fedora (incl. Kinoite) | BIOS & UEFI   | Uses built-in `grub.cfg`. Persistence is **not supported**.            |
 | Windows   | Windows 8, 8.1, 10, 11                                                                 | UEFI only     | **Optional** BIOS support and Windows 7 support planned via [`wimboot`](https://github.com/ipxe/wimboot). |
 | BSD       | FreeBSD                                                                                | BIOS & UEFI   | Uses chainloading with the native bootloader. NetBSD/OpenBSD planned.  |
 | Solaris   | Solaris 11                                                                             | UEFI only     | BIOS support uncertain.                                                |
