@@ -10,6 +10,10 @@ guard() {
     "$@" || die "Command failed: $*"
 }
 
+warn() {
+    echo -e "${WARNING_TEXT}: $1"
+}
+
 check_dependencies() {
     local missing=false
     for cmd in dd parted wipefs mkfs.vfat partprobe blockdev; do

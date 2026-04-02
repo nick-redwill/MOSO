@@ -112,6 +112,8 @@ setup() {
     uuid=$(blkid -s UUID -o value "$part") || die "Failed to get UUID for $part"
 
     echo "  Writing grub entry for $SYSTEM_NAME..."
+    
+    warn "$SYSTEM_NAME only supports UEFI mode"
     grub_entry "$uuid" "$part" >> "$efi_mount/$GRUB_FOLDER/grub.cfg"
 
     echo "  Done: $SYSTEM_NAME"
@@ -120,9 +122,10 @@ setup() {
 grub_entry() {
     local uuid=$1
     local part=$2
+
     cat << EOF
 
-menuentry "$SYSTEM_NAME ($part)" {
+menuentry "$SYSTEM_NAME EFI ($part)" {
     insmod chain
     insmod ntfs
 

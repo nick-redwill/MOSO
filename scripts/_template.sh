@@ -2,6 +2,11 @@
 
 SYSTEM_NAME="" # System name (for GRUB entry)
 
+# Function that returns required size for specific systems partition
+# Arguments:
+#   $1 - iso (path to iso file)
+get_required_size() {}
+
 
 # Function for preparing the partition
 # Arguments:
@@ -24,4 +29,5 @@ setup() {}
 # Arguments:
 #   $1 - uuid (partition uuid)
 #   $2 - part (e.g. /dev/sdb3)
+#NOTE: This function is called inside the setup()
 grub_entry() {}

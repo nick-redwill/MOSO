@@ -28,7 +28,6 @@ GRUB_FOLDER=""
 declare -a ISOS
 declare -a PROBED
 
-
 # Parsing arguments
 [ $# -eq 0 ] && usage
 
@@ -71,6 +70,10 @@ done
 
 
 main() {
+    if [[ $EUID -ne 0 ]]; then
+        die "This script must be run as root"
+    fi
+
     detect_grub
 
     echo ""

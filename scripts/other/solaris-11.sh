@@ -1,6 +1,7 @@
 #!/bin/bash
+# scripts/other/solaris-11.sh
 
-SYSTEM_NAME="BSD"
+SYSTEM_NAME="Solaris 11"
 
 get_required_size() {
     local iso=$1
@@ -21,7 +22,7 @@ make_partition() {
     # Calculating partition size + extra buffer
     local iso_size_bytes
     iso_size_bytes=$(get_required_size "$iso")
-    
+
     local size_mib=$(( (iso_size_bytes + BUFFER_SIZE) / 1024 / 1024 ))
     local end_mib=$(( start_mib + size_mib ))
 
@@ -63,7 +64,7 @@ setup() {
 
     # Writing grub entry
     echo "  Writing grub entry for $SYSTEM_NAME..."
-
+    
     warn "$SYSTEM_NAME only supports UEFI mode"
     grub_entry "$uuid" "$part" >> "$efi_mount/$GRUB_FOLDER/grub.cfg"
 
@@ -74,12 +75,11 @@ grub_entry() {
     local uuid=$1
     local part=$2
 
-
     cat << EOF
 
 menuentry "$SYSTEM_NAME EFI ($part)" {
     search --no-floppy --set=root --fs-uuid $uuid
-    chainloader /boot/loader.efi
+    chainloader /boot/grub/grub2oddx64.efi
 }
 EOF
 }
