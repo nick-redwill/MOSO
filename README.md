@@ -1,8 +1,6 @@
-
 <p align="center">
 <img src="media/logo.png" width="300px">
 </p>
-
 
 # Multiboot Operating System Orchestrator
 
@@ -52,6 +50,7 @@ Options:
 
 - [ ] Write a better README lol
 - [ ] Add support for more OSes (specifically Linux distros)
+- [ ] Either add a better support for Legacy BIOS mode for certain OSes or remove it completely and stick to UEFI-only
 - [ ] Add `--list` flag for listing all available systems
 - [ ] Add retry logic and special argument for that (`--max-retries=<N>`)
 
