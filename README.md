@@ -7,6 +7,7 @@
 **MOSO** is a command-line tool for creating multiboot USB drives. It automates partitioning, image writing, verification, and GRUB configuration, with support for Linux distributions, BSD systems, Windows, and more.
 
 ## Features
+
 - Automatic partitioning, formatting, and device preparation
 - GRUB installation and dynamic configuration generation
 - Integrity verification via checksums
@@ -17,20 +18,22 @@
 ## Design Principles
 
 #### **Simplicity & Transparency**
+
 MOSO is a 100% shell-based tool and does **not** include any precompiled binaries or executables. It relies on simple, reliable, open-source utilities and straightforward methods for writing and booting installation ISOs.
 When third-party tools are required, MOSO explicitly prompts the user before using them ensuring full control remains in **your** hands.
 
 #### **Ease of Use**
+
 A single command is enough to create a fully functional multiboot USB drive, with images written, configured, and verified automatically.
 
 #### **Security**
+
 By default, MOSO verifies checksums after writing images (unless explicitly disabled).
 Destructive actions always require user confirmation, unless the `--force` flag is used.
 
 #### **Modularity & Scalability**
+
 MOSO is designed with modularity, reusability, and scalability in mind. This makes it easier to add new systems, extend functionality, and customize behavior without unnecessary complexity.
-
-
 
 ## Installation
 
@@ -74,34 +77,28 @@ Options:
 
 ## Supported ISOs
 
-| Family    | Version / Distribution                                                                 | Boot Mode     | Status        | Notes                                                                 |
-|-----------|-----------------------------------------------------------------------------------------|---------------|---------------|-----------------------------------------------------------------------|
-| GNU/Linux | Ubuntu, Linux Mint, Debian, Arch (**excluding derivatives**), CachyOS, Puppy (Void, Debian), Fedora (incl. Kinoite), SystemRescue, GParted | BIOS & UEFI   | ✅ Supported   | Uses built-in `grub.cfg`. Persistence is **not supported**.            |
-| Windows   | Windows 8, 8.1, 10, 11                                                                 | UEFI only     | ✅ Supported   | Optional BIOS support and Windows 7 planned via [`wimboot`](https://github.com/ipxe/wimboot). |
-| BSD       | FreeBSD                                                                                | BIOS & UEFI   | ✅ Supported     | Uses chainloading with the native bootloader.                           |
-| BSD       | NetBSD                                                                                 | —             | ❌ Unsupported | No idea how to make it work yet. Contributions or ideas are welcome. |
-| Solaris   | Solaris 11                                                                             | UEFI only     | 🧪 Untested     | Needs more testing. BIOS support uncertain.                                                |
+| Family    | Version / Distribution                                                                                                                                                                                                                                                                                                                                                | Boot Mode   | Status         | Notes                                                                                       |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------- | ------------------------------------------------------------------------------------------- |
+| GNU/Linux | **Debian-based:** Ubuntu, Linux Mint, Debian, Pop!_OS, Kali<br />**Arch-based:** Arch Linux, Manjaro, Artix, CachyOS<br />**Red Hat-based:** Fedora (incl. Silverblue/Kinoite/Bazzite), AlmaLinux, Rocky Linux <br />**Independent:** Alpine, Void, NixOS <br />**Live tools:** GParted, SystemRescue, Puppy (Void and Debian editions) | BIOS & UEFI | ✅ Supported   | Uses built-in `grub.cfg`. <br />Persistence is **not supported**.                   |
+| Windows   | Windows 8, 8.1, 10, 11                                                                                                                                                                                                                                                                                                                                                | UEFI only   | ✅ Supported   | Optional BIOS support and Windows 7 planned via[`wimboot`](https://github.com/ipxe/wimboot). |
+| BSD       | FreeBSD                                                                                                                                                                                                                                                                                                                                                               | BIOS & UEFI | ✅ Supported   | Uses chainloading with the native bootloader.                                               |
+| BSD       | NetBSD                                                                                                                                                                                                                                                                                                                                                                | —          | ❌ Unsupported | No idea how to make it work yet. Contributions or ideas are welcome.                        |
+| Solaris   | Solaris 11                                                                                                                                                                                                                                                                                                                                                            | UEFI only   | 🧪 Untested    | Needs more testing. BIOS support uncertain.                                                 |
 
 ## Limitations & Caveats ⚠️
 
-* **Secure Boot is not supported**<br>
+* **Secure Boot is not supported**`<br>`
   MOSO uses a standard GRUB setup and does not include signed bootloaders.
-
-* **Drives are formatted using GPT**<br>
+* **Drives are formatted using GPT**`<br>`
   Some older systems with limited or no GPT support may fail to boot. MBR support may be considered in the future.
-
-* **MOSO performs destructive operations**<br>
+* **MOSO performs destructive operations**`<br>`
   Always double-check the selected device and ensure all important data is backed up before proceeding.
-
-* **UEFI support is more reliable than BIOS**<br>
+* **UEFI support is more reliable than BIOS**`<br>`
   Some systems (especially Windows) may not boot or function correctly in legacy BIOS mode.
-
-* **Persistence is not supported**<br>
+* **Persistence is not supported**`<br>`
   Live systems will not retain changes across reboots.
-
-* **ISO compatibility may vary**<br>
+* **ISO compatibility may vary**`<br>`
   Certain distributions or ISO versions may not work as expected. Please report any issues you encounter.
-
 
 ## TODO
 
