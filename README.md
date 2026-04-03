@@ -80,7 +80,7 @@ Options:
 | Windows   | Windows 8, 8.1, 10, 11                                                                 | UEFI only     | ✅ Supported   | Optional BIOS support and Windows 7 planned via [`wimboot`](https://github.com/ipxe/wimboot). |
 | BSD       | FreeBSD                                                                                | BIOS & UEFI   | ✅ Supported     | Uses chainloading with the native bootloader.                           |
 | BSD       | NetBSD                                                                                 | —             | ❌ Unsupported | No idea how to make it work yet. Contributions or ideas are welcome. |
-| Solaris   | Solaris 11                                                                             | UEFI only     | ✅ Supported     | BIOS support uncertain.                                                |
+| Solaris   | Solaris 11                                                                             | UEFI only     | 🧪 Untested     | Needs more testing. BIOS support uncertain.                                                |
 
 ## Limitations & Caveats ⚠️
 
