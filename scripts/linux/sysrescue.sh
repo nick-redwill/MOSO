@@ -8,6 +8,7 @@ SYSTEM_NAME="System Rescue"
 grub_entry() {
     local uuid=$1
     local part=$2
+    
     cat << EOF
 
 menuentry "$SYSTEM_NAME ($part)" {

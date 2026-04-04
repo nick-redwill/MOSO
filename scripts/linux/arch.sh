@@ -8,6 +8,8 @@ SYSTEM_NAME="Arch"
 # Overriding grub_entry function
 grub_entry() {
     local uuid=$1
+    local part=$2
+
     cat << EOF
 
 menuentry "$SYSTEM_NAME ($part)" {
